@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Mobile tutorial - Leaflet</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+	<script src="scripts/Leaflet.ImageOverlay.Rotated.js"></script>
+	<script src="scripts/angular.min.js"></script>
+	<script src ="scripts/readData.js"></script>
+	<script src="scripts/calender.min.js" type="text/javascript"></script>
+	<script src="scripts/socket.io.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/calendar.css" />
+
+	<style>#map { height: 800px; width: 1300px; float: left; } </style>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<div class="row">
+	<div class="col-md-10 col-xs-12 col-sm-12" style="margin-right:-15px">
+		<div id='map'>
+		</div>
+	</div>
+
+	<div class="col-md-2 col-sm-12 col-xs-12" style="float:left">
+		<br />
+		<div id="controls">
+			<h3><small>Search</small></h3>
+			<select class="form-control" id="dest" placeholder="Search destination">
+				<option>Select Destination\Clear</option>
+			    <option>Innovation team stall</option>
+				<option>abc stall</option>
+			  </select>
+			<button class="btn btn-block btn-success" ng-click="move()">Go</button>
+			<h3><small>Calender</small></h3>
+		</div>
+	<div id="dp"></div>
+	</div>
+</div>
+<script src="scripts/map.js"></script>
+<script type="text/javascript">
+    var dp = new DayPilot.Calendar("dp");
+    // behavior and appearance
+    dp.cssClassPrefix = "calendar_white";
+    // view
+    dp.startDate = "2016-03-25";
+    dp.days = 1;
+	
+    dp.events.list=fetchCalender();
+    dp.init();
+</script>
+<script src="scripts/socket.io.js"></script>
+</body>
+</html>
